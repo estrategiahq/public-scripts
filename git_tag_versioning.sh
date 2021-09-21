@@ -125,4 +125,9 @@ function generateTag {
 
 generateTag $prefix
 
+if [[ $prefix == "prod" ]]; then
+    printf "\n\nAs we are running production, let's do the same for sandbox...\n\n"
+    generateTag "sandbox"
+fi
+
 exit 0
