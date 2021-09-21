@@ -102,9 +102,11 @@ function generateTag {
             exit 0
     esac
 
+    tagName="$env-v$major.$minor.$patch"
+
     # Shows information
     printf "Current version : $env-v%s\n" "$last"
-    printf "New tag         : ${env}-v%s.%s.%s\n\n" "$major" "$minor" "$patch"
+    printf "New tag         : $tagName\n\n"
 
     # Creates local tag
     if [[ ! -n "$force" && "no" == $(confirm "Do you agree?") ]]; then
@@ -112,7 +114,7 @@ function generateTag {
         exit 0;
     fi
 
-    runCommand git tag "${env}-v$major.$minor.$patch"
+    runCommand git tag $tagName
 
     # Pushes tag
     if [[ ! -n "$force" && "no" == $(confirm "Do you want to push this tag right now?") ]]; then
@@ -120,7 +122,7 @@ function generateTag {
         exit 0;
     fi
 
-    runCommand git push origin "${env}-v$major.$minor.$patch"
+    runCommand git push origin $tagName
 }
 
 generateTag $prefix
