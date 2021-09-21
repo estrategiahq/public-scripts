@@ -57,7 +57,7 @@ function getLastTag {
     lasttag=`git tag | sort -r --version-sort | grep "^${env}-v[0-9]*\.[0-9]*\.[0-9]*" | head -1 2> /dev/null` || true
 
     if [[ -z "$lasttag" ]]; then
-        lasttag="v0.0.0"
+        lasttag="0.0.0"
     fi
 
     parts=(${lasttag//./ })
