@@ -70,7 +70,7 @@ function getLastTag {
     last="$major.$minor.$patch"
 }
 
-# Generates a tag base on the $env arg received 
+# Generates a tag based on the $env arg received 
 function generateTag {
     env=$1
     echo "Prefix: $env";
